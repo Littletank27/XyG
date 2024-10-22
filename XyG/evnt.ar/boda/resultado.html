@@ -367,12 +367,13 @@
 
                 // Crear el botón de WhatsApp
                 const whatsappButton = document.createElement('a');
-                whatsappButton.href = `https://wa.me/?text={urls[index]}`;
+                whatsappButton.href = `https://wa.me/?text=${encodeURIComponent(urls[index])}`; // Cambiado por encodeURIComponent
                 whatsappButton.classList.add('whatsapp-button');
                 whatsappButton.target = "_blank";
                 whatsappButton.textContent = "Enviar por WhatsApp";
 
                 resultado.appendChild(whatsappButton); // Añadir el botón de WhatsApp al div
+
 
                 resultados.appendChild(resultado);
             });
