@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="css_result.css">
+    <script>
+        function mostrarResultados() {
+            const estados = JSON.parse(localStorage.getItem('estados')) || {};
+            const resultados = document.getElementById('resultados');
+            resultados.innerHTML = '';
+
+            // Array de nombres en el orden deseado
+            const nombres = [
+                "Wayar Pedro",
+                "Coyar Elida",
+                "Wayar Santiago",
+                "Wayar Samuel",
+                "Wayar Joana",
+                "Rojas Diego",
+                "Ambar",
+                "Ander",
+                "Coyar Catalino",
+                "Vilte Vicenta",
+                "Coyar Maximiliano",
+                "Guaymás Leila",
+                "Itatí",
+                "Coyar Richar",
+                "Coyar Julia",
+                "Coyar José",
+                "Coyar Mónica",
+                "Coyar Misael",
+                "Coyar Mariela",
+                "Ramiro",
+                "Coyar Freddy",
+                "Coyar Guada",
+                "Tolaba Mercedes",
+                "Coyar Roberto",
+                "Wayar Agapito",
+                "Wayar Julia",
+                "Cardozo Beto",
+                "Wayar Juanita",
+                "Wayar Cristian",
+                "Quela",
+                "Wayar Sebastián",
+                "Señora Seba",
+                "Wayar Fabio",
+                "Wayar Juana",
+                "Calbet Sergio",
+                "Wayar Graciela",
+                "Wayar Federico",
+                "Wayar Luján",
+                "Abuela blanca",
+                "Yufra Atanacio",
+                "Wayar (chita)",
+                "Yufra Silvia",
+                "Yufra Mabel",
+                "Villa Javier",
+                "Yufra Ana Mariela",
+                "Mario",
+                "Wayar nena",
+                "Figueroa Eduardo",
+                "Figueroa Lourdes",
+                "Figueroa Franco",
+                "Villalba Ivana",
+                "Wayar Cristina",
+                "Wayar Ivana",
+                "Wayar Antonia",
+                "Lopez Martín",
+                "Lopez Juan José",
+                "Analía",
+                "Lopez Walter",
+                "Lopez Paulo",
+                "Elizabeth",
+                "Lopez Ariel",
+                "Vanesa",
+                "Lopez Carlos",
+                "Señora Carlos",
+                "Lopez Laura",
+                "Wayar Celina",
+                "Torres Olga",
+                "Torres Matías",
+                "Torres Jovita",
+                "Waldo",
+                "Torres Silvina",
+                "Torres Mariana",
+                "Morey Gustavo",
+                "Quiroga Romina",
+                "Maximiliano",
+                "Muruaga Karen",
+                "Daniel",
+                "Godoy Eliana",
+                "Atilio",
+                "Nuñez Francisco",
+                "Anahí Acosta",
+                "Cruz Natalia",
+                "Adrién",
+                "Mendoza Norma",
+                "Nuñez Silvina",
+                "Ignes Hugo",
+                "Cruz nena",
+                "Carlos",
+                "Sosa Patricia",
+                "Damián",
+                "Cancinos Luis",
+                "Claudia",
+                "Cancinos Facundo",
+                "Arancibia Romina",
+                "Tomi",
+                "Luciano",
+                "Fran",
+                "Cancinos Maira",
+                "Dámaso Daniel",
+                "Cancinos Belén",
+                "Ramiro",
+                "Ari",
+                "Cancinos Darío",
+                "Alvarez Paola",
+                "Maidana Liliana",
+                "Rueda Juan",
+                "Rueda Gabriel Toribio",
+                "Rueda Maximiliano",
+                "Rueda Marisel",
+                "Rueda Rocío",
+                "Pilar",
+                "Maidana Teófilo",
+                "Maidana Alejandro",
+                "Maidana Abril",
+                "Maidana Alexander",
+                "Maidana Erik",
+                "Maidana Karen",
+                "Oriana",
+                "Sosa Florencia",
+                "Fernando",
+                "Sosa Camila",
+                "Novio Camila",
+                "Magnani Ivana",
+                "Esposo",
+                "Toledo Iván",
+                "Maru Mesias",
+                "Diaz Maximiliano",
+                "Condorí Vanesa",
+                "Flores Cristian",
+                "Morales Itatí",
+                "Puca Emanuel",
+                "Tapia Carlos",
+                "Ramos Fernando",
+                "Flores Facundo",
+                "Neri Martin",
+                "Señora",
+                "Viñas Marcelo",
+                "Señora",
+                "Tonini Ignacio",
+                "María",
+                "Anze Carlos",
+                "Belén",
+                "Gareca Paula",
+                "Sergio",
+                "Gomez Gabriel",
+                "Hurtado Alejandro",
+                "Jimenez Pablo",
+                "Jimenez Matías",
+                "Jimenez Gilma",
+                "Griffa Rafael",
+                "Gallegos Liz",
+                "Quipildor Nicolás",
+                "Romero Cristian",
+                "Rocio",
+                "Flores Luis",
+                "Colque Gustavo",
+                "Yeni",
+                "García Jorge",
+                "Acompañante",
+                "Alberstein Marcos",
+                "Señora Alberstein",
+                "Guantay Walter"
+            ];
+
+            // Array de URLs para cada nombre
+            const urls = [
+                "https://example.com/invitacion/wayar-pedro", // Wayar Pedro
+                "https://example.com/invitacion/coyar-elida", // Coyar Elida
+                // ...otras URLs...
+                "https://example.com/invitacion/guantay-walter"
+            ];
+
+            // Mostrar resultados en el orden del array de nombres
+            nombres.forEach((nombre, index) => {
+                const resultado = document.createElement('div');
+                resultado.classList.add('resultado-item');
+
+                const estado = estados[`nombre${index + 1}`] ? 'Sí' : 'No';
+                const estadoSpan = document.createElement('span');
+                estadoSpan.classList.add('estado', estado === 'No' ? 'no' : 'sí');
+                estadoSpan.textContent = estado;
+
+                resultado.textContent = `${index + 1}. ${nombre} `;
+                resultado.appendChild(estadoSpan);
+
+                // Botón "Ver invitación"
+                const verInvitacionButton = document.createElement('a');
+                verInvitacionButton.href = urls[index]; // Usar URL de acuerdo al índice
+                verInvitacionButton.classList.add('ver-invitacion-button');
+                verInvitacionButton.target = "_blank";
+                verInvitacionButton.textContent = "Ver invitación";
+
+                resultado.appendChild(verInvitacionButton); // Añadir el botón "Ver invitación" al div
+
+                // Crear el botón de WhatsApp
+                const whatsappButton = document.createElement('a');
+                whatsappButton.href = `https://wa.me/?text={urls[index]}`;
+                whatsappButton.classList.add('whatsapp-button');
+                whatsappButton.target = "_blank";
+                whatsappButton.textContent = "Enviar por WhatsApp";
+
+                resultado.appendChild(whatsappButton); // Añadir el botón de WhatsApp al div
+
+                resultados.appendChild(resultado);
+            });
+        }
+
+        window.onload = mostrarResultados;
+    </script>
+</head>
+<body>
+    <h1>Lista de invitados</h1>
+
+    <!-- Botón para refrescar la página -->
+    <button class="refresh-button" onclick="location.reload();">Refrescar Página</button>
+
+    <div id="resultados" class="resultados-container"></div>
+
+    <a href="https://wa.me/?text=https://dario2703.github.io/Boda-XyG/InvitacionXyG/evnt.ar/boda/" 
+    class="whatsapp-button" target="_blank">Enviar por WhatsApp</a>
+
+</body>
+</html>
