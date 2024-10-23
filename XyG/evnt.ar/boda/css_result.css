@@ -30,93 +30,118 @@ h1 {
 
 .resultado-item {
     display: flex;
-    justify-content: space-between; /* Esto distribuye el espacio entre los elementos */
-    align-items: center; /* Alinear verticalmente */
+    flex-direction: row; /* Asegura que los items se alineen horizontalmente */
+    justify-content: space-between; 
+    align-items: center; 
     padding: 15px;
     border-bottom: 1px solid #e0e0e0;
     transition: background-color 0.3s; 
+    flex-wrap: wrap; /* Permite que los items se ajusten a una nueva línea si no caben */
 }
 
 .resultado-item:last-child {
-    border-bottom: none; /* Eliminar borde inferior del último item */
+    border-bottom: none; 
 }
 
 .resultado-item span {
     font-size: 16px;
-    margin-left: 20px; /* Espacio entre nombre y estado */
+    margin-left: 20px; 
 }
 
 .estado {
     font-weight: bold;
-    width: 50px; /* Define un ancho fijo para el estado */
-    text-align: center; /* Centra el texto dentro del span */
+    width: 50px; 
+    text-align: center; 
 }
 
 .estado.sí {
-    color: #4caf50; /* Verde para "Sí" */
+    color: #4caf50; 
 }
 
 .estado.no {
-    color: #f44336; /* Rojo para "No" */
+    color: #f44336; 
     font-weight: bold;
-    background-color: #ffe5e5; /* Fondo suave para resaltar */
-    padding: 5px; /* Añadir un poco de espacio interno */
-    border-radius: 4px; /* Bordes redondeados */
+    background-color: #ffe5e5; 
+    padding: 5px; 
+    border-radius: 4px; 
 }
 
 .refresh-button {
-    padding: 10px 20px;  /* Espaciado interno */
-    font-size: 16px;      /* Tamaño de fuente */
-    color: #ffffff;       /* Color del texto */
-    background-color: #007bff; /* Color de fondo azul */
-    border: none;         /* Sin borde */
-    border-radius: 5px;   /* Bordes redondeados */
-    cursor: pointer;      /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra suave */
-    display: block;      /* Hace que el botón use todo el ancho disponible */
-    margin: 20px auto;   /* Centrado con margen superior e inferior */
-    width: fit-content;  /* Ajustar el ancho al contenido */
+    padding: 10px 20px;  
+    font-size: 16px;      
+    color: #ffffff;       
+    background-color: #007bff; 
+    border: none;         
+    border-radius: 5px;   
+    cursor: pointer;      
+    transition: background-color 0.3s, transform 0.2s; 
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); 
+    display: block;      
+    margin: 20px auto;   
+    width: fit-content;  
 }
 
 .refresh-button:hover {
-    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Levantar un poco el botón */
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
 }
 
 .refresh-button:active {
-    transform: translateY(0); /* Volver a la posición original al hacer clic */
+    transform: translateY(0); 
 }
 
 .whatsapp-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #25D366; /* Color de WhatsApp */
+    background-color: #25D366; 
     color: white;
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
+    margin: 10px 0; /* Para asegurar un poco de espacio entre los botones en móviles */
 }
 
-/* Nuevo estilo para el botón "Ver invitación" */
 .ver-invitacion-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #34b7f1; /* Color personalizado */
+    background-color: #34b7f1; 
     color: white;
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    transition: background-color 0.3s, transform 0.2s; 
+    margin: 10px 0; /* Para asegurar un poco de espacio entre los botones */
 }
 
 .ver-invitacion-button:hover {
-    background-color: #0095e8; /* Color más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Levantar un poco el botón */
+    background-color: #0095e8; 
+    transform: translateY(-2px); 
 }
 
 .ver-invitacion-button:active {
-    transform: translateY(0); /* Volver a la posición original al hacer clic */
+    transform: translateY(0); 
+}
+
+/* Media queries para ajustar la visualización en pequeños dispositivos */
+@media (max-width: 600px) {
+    .resultado-item {
+        flex-direction: column; /* Cambia a vertical en pantallas pequeñas */
+        align-items: flex-start; /* Alinear los items desde el inicio */
+    }
+
+    .resultado-item span {
+        margin: 5px 0; /* Ajustar márgenes para menor espacio */
+    }
+
+    .estado {
+        width: auto; /* Permite que el estado tome el espacio necesario */
+        text-align: left; /* Alinear el texto a la izquierda */
+    }
+
+    .refresh-button, .whatsapp-button, .ver-invitacion-button {
+        width: 100%; /* Botones ocupen el 100% del ancho */
+        margin: 10px 0; /* Espacio uniforme entre los botones */
+    }
 }
