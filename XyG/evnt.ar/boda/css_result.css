@@ -1,0 +1,147 @@
+/* styles.css */
+
+/* Reseteo de estilos */
+body, h1, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #4a4a4a;
+    margin: 20px 0;
+}
+
+.resultados-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resultado-item {
+    display: flex;
+    flex-direction: row; /* Asegura que los items se alineen horizontalmente */
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s; 
+    flex-wrap: wrap; /* Permite que los items se ajusten a una nueva línea si no caben */
+}
+
+.resultado-item:last-child {
+    border-bottom: none; 
+}
+
+.resultado-item span {
+    font-size: 16px;
+    margin-left: 20px; 
+}
+
+.estado {
+    font-weight: bold;
+    width: 50px; 
+    text-align: center; 
+}
+
+.estado.sí {
+    color: #4caf50; 
+}
+
+.estado.no {
+    color: #f44336; 
+    font-weight: bold;
+    background-color: #ffe5e5; 
+    padding: 5px; 
+    border-radius: 4px; 
+}
+
+.refresh-button {
+    padding: 10px 20px;  
+    font-size: 16px;      
+    color: #ffffff;       
+    background-color: #007bff; 
+    border: none;         
+    border-radius: 5px;   
+    cursor: pointer;      
+    transition: background-color 0.3s, transform 0.2s; 
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); 
+    display: block;      
+    margin: 20px auto;   
+    width: fit-content;  
+}
+
+.refresh-button:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
+}
+
+.refresh-button:active {
+    transform: translateY(0); 
+}
+
+.whatsapp-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #25D366; 
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px 0; /* Para asegurar un poco de espacio entre los botones en móviles */
+}
+
+.ver-invitacion-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #34b7f1; 
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s; 
+    margin: 10px 0; /* Para asegurar un poco de espacio entre los botones */
+}
+
+.ver-invitacion-button:hover {
+    background-color: #0095e8; 
+    transform: translateY(-2px); 
+}
+
+.ver-invitacion-button:active {
+    transform: translateY(0); 
+}
+
+/* Media queries para ajustar la visualización en pequeños dispositivos */
+@media (max-width: 600px) {
+    .resultado-item {
+        flex-direction: column; /* Cambia a vertical en pantallas pequeñas */
+        align-items: flex-start; /* Alinear los items desde el inicio */
+    }
+
+    .resultado-item span {
+        margin: 5px 0; /* Ajustar márgenes para menor espacio */
+    }
+
+    .estado {
+        width: auto; /* Permite que el estado tome el espacio necesario */
+        text-align: left; /* Alinear el texto a la izquierda */
+    }
+
+    .refresh-button, .whatsapp-button, .ver-invitacion-button {
+        width: 100%; /* Botones ocupen el 100% del ancho */
+        margin: 10px 0; /* Espacio uniforme entre los botones */
+    }
+}
